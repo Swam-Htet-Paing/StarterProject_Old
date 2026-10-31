@@ -97,9 +97,14 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
 
-      # P1                       # P2
-      - run: dotnet test         - run: dotnet test | tee test.log
+      # P1                       
+      - run: dotnet test         
+      # P2
+      - run: dotnet test | tee test.log
 
-      # P3                       # P4
-      - shell: bash              - continue-on-error: true
-        run: dotnet test | tee test.log     run: dotnet test
+      # P3                       
+      - shell: bash              
+      # P4
+      - continue-on-error: true
+        run: dotnet test | tee test.log     
+        run: dotnet test
